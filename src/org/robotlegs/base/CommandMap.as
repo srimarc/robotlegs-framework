@@ -165,7 +165,7 @@ package org.robotlegs.base
 				injector.mapValue(payloadClass, payload, named);
 			}
 			
-			var command:Object = injector.instantiate(commandClass);
+			var command:Object = injector.hasMapping(commandClass) ? injector.getInstance(commandClass) : injector.instantiate(commandClass);
 			
 			if (payload !== null || payloadClass != null)
 				injector.unmap(payloadClass, named);
